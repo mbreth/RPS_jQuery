@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/0af4e4bdba.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- jQuery cdn-->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="index.css" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Paytone+One&display=swap"
+      rel="stylesheet"
+    />
+    <title>Rock, Paper, Scissors</title>
+  </head>
+  <body>
+    <div id="game-container">
+      <h1>Rock, Paper, Scissors</h1>
+      <i id="hand" class="fas fa-hand-rock"></i>
+      <i id="paper" class="fas fa-hand-paper"></i>
+      <i id="scissors" class="fas fa-hand-scissors"></i>
+      <p id="result"></p>
+    </div>
+
+    <div id="score-container">
+      <h2>Score:</h2>
+      <h4>You: <span id="you">0</span></h4>
+      <h4>Robot: <span id="bot">0</span></h4>
+    </div>
+    <script>
+      let personScore = $("#you").html();
+      personScore = parseInt(personScore);
+      let botScore = $("#bot").html();
+      botScore = parseInt(botScore);
+      // 1=rock, 2=paper, 3=scissors
+      $("#hand").on("click", function() {
+        let randomNum = Math.floor(Math.random() * 3 + 1);
+        if (randomNum == 1) {
+          $("#result").html("Tie! Both players chose rock!");
+        } else if (randomNum == 2) {
+          $("#result").html("You lost! The bot chose paper!");
+          botScore++;
+          $("#bot").html(botScore);
+        } else if (randomNum == 3) {
+          $("#result").html("You won! The bot chose scissors!");
+          personScore++;
+          $("#you").html(personScore);
+        }
+      });
+      // 1=rock, 2=paper, 3=scissors
+      $("#paper").on("click", function() {
+        let randomNum = Math.floor(Math.random() * 3 + 1);
+        if (randomNum == 1) {
+          $("#result").html("You won! The bot chose rock!");
+          personScore++;
+          $("#you").html(personScore);
+        } else if (randomNum == 2) {
+          $("#result").html("Tie! Both players chose paper!");
+        } else if (randomNum == 3) {
+          $("#result").html("You lost! The bot chose scissors!");
+          botScore++;
+          $("#bot").html(botScore);
+        }
+      });
+      // 1=rock, 2=paper, 3=scissors
+      $("#scissors").on("click", function() {
+        let randomNum = Math.floor(Math.random() * 3 + 1);
+        if (randomNum == 1) {
+          $("#result").html("You lost! The bot chose rock!!");
+          botScore++;
+          $("#bot").html(botScore);
+        } else if (randomNum == 2) {
+          $("#result").html("You won! The bot chose paper!");
+          personScore++;
+          $("#you").html(personScore);
+        } else if (randomNum == 3) {
+          $("#result").html("Tie! The bot chose scissors!");
+        }
+      });
+    </script>
+  </body>
+</html>
